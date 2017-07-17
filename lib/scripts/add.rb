@@ -21,7 +21,12 @@ module Scripts
           argv.shift # add
           key = argv.shift # key
           argv.shift # as
-          value = argv.join(' ')
+          value = argv
+
+
+          value = value.map {|x| ['then'].include?(x)? ';' : x}
+          value = value.map {|x| ['and'].include?(x) ? '&&' : x}
+          value = value.join(' ')
 
           json["scripts"][key] = value
           File.write('package.json', JSON.pretty_generate(json))
