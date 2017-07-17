@@ -18,7 +18,7 @@ module Scripts
 
         if json["scripts"]
           json["scripts"].keys.sort.each do |key|
-            puts '%-25.25s %s' % [key, json["scripts"][key]]
+            puts '%-30.30s %s' % [key, json["scripts"][key]]
           end
         else
           puts 'scripts is not defined in package.json'
