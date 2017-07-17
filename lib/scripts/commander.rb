@@ -5,6 +5,7 @@ module Scripts
   class Commander
 
     COMMANDS = [
+      :add,
       :init,
       :list,
       :help
