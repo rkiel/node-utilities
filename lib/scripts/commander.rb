@@ -8,7 +8,8 @@ module Scripts
       :add,
       :init,
       :list,
-      :help
+      :help,
+      :remove
     ].sort
 
     DEFAULT = :help
