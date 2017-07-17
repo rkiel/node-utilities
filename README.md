@@ -21,7 +21,7 @@ git clone https://github.com/rkiel/node-utilities.git
 To add the scripts to your path, add the following to `.bash_profile`
 
 ```
-export NODE_UTILITIES_BIN="~/GitHub/rkiel/git-utilities/bin"
+export NODE_UTILITIES_BIN="~/GitHub/rkiel/node-utilities/bin"
 
 export PATH=${NODE_UTILITIES_BIN}:$PATH
 ```
