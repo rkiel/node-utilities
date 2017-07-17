@@ -6,6 +6,7 @@ module Scripts
 
     COMMANDS = [
       :init,
+      :list,
       :help
     ].sort
 
