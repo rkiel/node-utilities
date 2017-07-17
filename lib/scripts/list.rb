@@ -5,7 +5,7 @@ module Scripts
 
   class List < Scripts::Base
     def valid?
-      true
+      argv.size == 1
     end
 
     def help
