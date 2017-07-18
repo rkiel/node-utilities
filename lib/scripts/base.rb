@@ -27,9 +27,24 @@ module Scripts
 
     def sort ( scripts )
       keys = scripts.keys.sort_by(&:downcase)
-      keys.each do |key|
-        puts ' %-30.30s %s' % [key, scripts[key]]
+      heading = 'script'
+      width = keys.reduce(heading.length) do |accumulator, element|
+        accumulator > element.size ? accumulator : element.size
       end
+
+      fmt  = " %-#{width}.#{width}s %s"
+      
+      puts
+      puts fmt % ['script', 'command(s)']
+      puts fmt % ['------', '----------']
+      keys.each do |key|
+        puts fmt % [key, scripts[key]]
+      end
+      puts
+    end
+
+    def write ( json )
+      File.write('package.json', JSON.pretty_generate(json))
     end
 
     def execute

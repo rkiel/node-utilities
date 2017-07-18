@@ -17,7 +17,11 @@ module Scripts
       key = argv.shift # key
 
       json["scripts"].delete key
-      File.write('package.json', JSON.pretty_generate(json))
+
+      write json
+
+      puts
+      puts " REMOVED #{key}"
 
       sort json["scripts"]
     end

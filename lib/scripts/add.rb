@@ -25,7 +25,11 @@ module Scripts
       value = value.join(' ')
 
       json["scripts"][key] = value
-      File.write('package.json', JSON.pretty_generate(json))
+
+      write json
+
+      puts
+      puts " ADDED #{key}"
 
       sort json["scripts"]
     end
