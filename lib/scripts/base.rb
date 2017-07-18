@@ -24,6 +24,32 @@ module Scripts
       puts
       exit
     end
+
+    def sort ( scripts )
+      keys = scripts.keys.sort_by(&:downcase)
+      keys.each do |key|
+        puts ' %-30.30s %s' % [key, scripts[key]]
+      end
+    end
+
+    def execute
+      if File.exist? 'package.json'
+        json = JSON.parse(File.read('package.json'))
+
+        if json["scripts"]
+
+          sub_execute json
+
+        else
+          puts 'scripts is not defined in package.json'
+          puts 'scripts init'
+        end
+
+      else
+        puts 'package.json does not exist'
+        puts 'scripts init'
+      end
+    end
   end
 
 end

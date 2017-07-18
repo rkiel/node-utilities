@@ -9,26 +9,11 @@ module Scripts
     end
 
     def help
-      "scripts list"
+      "scripts listtttt"
     end
 
-    def execute
-      if File.exist? 'package.json'
-        json = JSON.parse(File.read('package.json'))
-
-        if json["scripts"]
-          json["scripts"].keys.sort.each do |key|
-            puts '%-30.30s %s' % [key, json["scripts"][key]]
-          end
-        else
-          puts 'scripts is not defined in package.json'
-          puts 'scripts init'
-        end
-
-      else
-        puts 'package.json does not exist'
-        puts 'scripts init'
-      end
+    def sub_execute ( json )
+      sort json["scripts"]
     end
   end
 

@@ -12,29 +12,14 @@ module Scripts
       "scripts remove [name]"
     end
 
-    def execute
-      if File.exist? 'package.json'
-        json = JSON.parse(File.read('package.json'))
+    def sub_execute ( json )
+      argv.shift # remove`
+      key = argv.shift # key
 
-        if json["scripts"]
+      json["scripts"].delete key
+      File.write('package.json', JSON.pretty_generate(json))
 
-          argv.shift # remove`
-          key = argv.shift # key
-
-          json["scripts"].delete key
-          File.write('package.json', JSON.pretty_generate(json))
-          json["scripts"].keys.sort.each do |key|
-            puts '%-15.15s %s' % [key, json["scripts"][key]]
-          end
-        else
-          puts 'scripts is not defined in package.json'
-          puts 'scripts init'
-        end
-
-      else
-        puts 'package.json does not exist'
-        puts 'scripts init'
-      end
+      sort json["scripts"]
     end
   end
 
