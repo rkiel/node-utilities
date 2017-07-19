@@ -16,14 +16,24 @@ module Scripts
       argv.shift # remove`
       key = argv.shift # key
 
-      json["scripts"].delete key
+      scripts = json["scripts"]
 
-      write json
+      if scripts[key]
+        scripts.delete key
 
-      puts
-      puts " REMOVED #{key}"
+        write json
 
-      sort json["scripts"]
+        puts
+        puts " REMOVED #{key}"
+
+        sort scripts
+      else
+        puts
+        puts " NOT FOUND #{key}"
+
+        sort scripts
+      end
+
     end
   end
 

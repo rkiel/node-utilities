@@ -38,9 +38,11 @@ source ~/GitHub/rkiel/node-utilities/dotfiles/bashrc
 
 ```unix
 sc add [name] as [words...]
+sc delete [name] (alias for remove)
 sc help
 sc init
 sc list
 sc remove [name]
+sc show (alias for list)
 sc tab [pattern]
 ```

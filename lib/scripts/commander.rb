@@ -6,10 +6,12 @@ module Scripts
 
     COMMANDS = [
       :add,
+      :delete,
       :init,
       :list,
       :help,
       :remove,
+      :show,
       :tab
     ].sort
 
