@@ -9,7 +9,7 @@ module Scripts
     end
 
     def help
-      "#{script_name} add [name] as [words...]"
+      "#{script_name} add [name] as [words...[then||and||or]]"
     end
 
     def sub_execute(json)
