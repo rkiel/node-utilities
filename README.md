@@ -26,6 +26,11 @@ export NODE_UTILITIES_BIN="~/GitHub/rkiel/node-utilities/bin"
 export PATH=${NODE_UTILITIES_BIN}:$PATH
 ```
 
+To enable tab completion for the `sc` script, add the following to `.bashrc`.
+
+```
+source ~/GitHub/rkiel/node-utilities/dotfiles/bashrc
+```
 
 ## Scripts utility
 
