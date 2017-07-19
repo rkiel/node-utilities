@@ -37,7 +37,7 @@ source ~/GitHub/rkiel/node-utilities/dotfiles/bashrc
 ### Usage
 
 ```unix
-sc add [name] as [words...]
+sc add [name] as [words...[then||and||or]]
 sc delete [name] (alias for remove)
 sc help
 sc init
