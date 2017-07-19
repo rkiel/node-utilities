@@ -14,7 +14,7 @@ module Scripts
     end
 
     def help
-      "scripts help"
+      "#{script_name} help"
     end
 
     def execute

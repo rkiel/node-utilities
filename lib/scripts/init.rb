@@ -9,7 +9,7 @@ module Scripts
     end
 
     def help
-      "scripts init"
+      "#{script_name} init"
     end
 
     def execute

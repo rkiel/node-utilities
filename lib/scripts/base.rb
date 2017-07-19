@@ -14,6 +14,10 @@ module Scripts
       @argv = argv
     end
 
+    def script_name
+      "sc"
+    end
+    
     def help
       "TBD"
     end
@@ -33,7 +37,7 @@ module Scripts
       end
 
       fmt  = " %-#{width}.#{width}s %s"
-      
+
       puts
       puts fmt % ['script', 'command(s)']
       puts fmt % ['------', '----------']

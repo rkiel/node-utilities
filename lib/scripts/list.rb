@@ -9,7 +9,7 @@ module Scripts
     end
 
     def help
-      "scripts listtttt"
+      "#{script_name} list"
     end
 
     def sub_execute ( json )

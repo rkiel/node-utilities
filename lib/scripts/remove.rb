@@ -9,7 +9,7 @@ module Scripts
     end
 
     def help
-      "scripts remove [name]"
+      "#{script_name} remove [name]"
     end
 
     def sub_execute ( json )

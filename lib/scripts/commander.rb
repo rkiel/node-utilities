@@ -9,7 +9,8 @@ module Scripts
       :init,
       :list,
       :help,
-      :remove
+      :remove,
+      :tab
     ].sort
 
     DEFAULT = :help
