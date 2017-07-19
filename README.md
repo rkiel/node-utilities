@@ -1,10 +1,10 @@
 ## Introduction
 
-This is a collection of simple command-line scripts, bash aliases, and bash utilities that make using `node` even easier.
+This is a collection of simple command-line scripts, bash aliases, and bash utilities that make using `node` and `npm` even easier.
 
 The command-line scripts include:
 
-* scripts - make working with "scripts" inside `package.json` easier
+* sc - make working with "scripts" inside `package.json` easier
 
 The command-line scripts are written in Ruby 2.x using just the standard libraries and do not require any gems to be installed.
 For OS X users, these should just work out-of-box.
@@ -32,8 +32,15 @@ To enable tab completion for the `sc` script, add the following to `.bashrc`.
 source ~/GitHub/rkiel/node-utilities/dotfiles/bashrc
 ```
 
-## Scripts utility
+## sc utility
 
 ### Usage
 
-TBD
+```unix
+sc add [name] as [words...]
+sc help
+sc init
+sc list
+sc remove [name]
+sc tab [pattern]
+```
