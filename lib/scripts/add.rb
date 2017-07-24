@@ -19,9 +19,10 @@ module Scripts
       value = argv
 
 
-      value = value.map {|x| ['then'].include?(x)? ';' : x}
+      value = value.map {|x| ['then'].include?(x)? '; ' : x}
       value = value.map {|x| ['and'].include?(x) ? '&&' : x}
       value = value.map {|x| ['or'].include?(x) ? '||' : x}
+      value = value.map {|x| ['pipe'].include?(x)? ' | ' : x}
       value = value.join(' ')
 
       json["scripts"][key] = value
