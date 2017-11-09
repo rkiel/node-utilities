@@ -18,18 +18,11 @@ mkdir -p ~/GitHub/rkiel && cd $_
 git clone https://github.com/rkiel/node-utilities.git
 ```
 
-To add the scripts to your path, add the following to `.bash_profile`
+To update your `.bash_profile` and `.bashrc`.
 
 ```
-export NODE_UTILITIES_BIN="~/GitHub/rkiel/node-utilities/bin"
-
-export PATH=${NODE_UTILITIES_BIN}:$PATH
-```
-
-To enable tab completion for the `sc` script, add the following to `.bashrc`.
-
-```
-source ~/GitHub/rkiel/node-utilities/dotfiles/bashrc
+cd ~/GitHub/rkiel/node-utilities
+./install/bin/setup
 ```
 
 ## sc utility
