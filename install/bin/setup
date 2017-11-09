@@ -1,6 +1,10 @@
+#!/usr/bin/env ruby
 
-echo 'export NODE_UTILITIES_BIN="~/GitHub/rkiel/node-utilities/bin"' >> ~/.bash_profile
+require_relative '../lib/setup/commander'
 
-echo 'export PATH=${NODE_UTILITIES_BIN}:$PATH' >> ~/.bash_profile
-
-echo 'source ~/GitHub/rkiel/node-utilities/dotfiles/bashrc' >> ~/.bashrc
+commander = Setup::Commander.new(ARGV)
+if commander.valid?
+  commander.execute
+else
+  commander.help
+end
