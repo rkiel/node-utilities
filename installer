@@ -1,0 +1,6 @@
+
+echo 'export NODE_UTILITIES_BIN="~/GitHub/rkiel/node-utilities/bin"' >> ~/.bash_profile
+
+echo 'export PATH=${NODE_UTILITIES_BIN}:$PATH' >> ~/.bash_profile
+
+echo 'source ~/GitHub/rkiel/node-utilities/dotfiles/bashrc' >> ~/.bashrc
