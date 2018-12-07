@@ -9,4 +9,4 @@ function get_scripts_commands()
 
 complete -F get_scripts_commands sc
 
-alias run='npm run'
+alias run='npm run --silent'
