@@ -11,7 +11,9 @@ For OS X users, these should just work out-of-box.
 
 ## Installation
 
-Clone the repository
+Install Node using the [Node Version Manager](docs/NVM.md)
+
+Clone this repository
 
 ```
 mkdir -p ~/GitHub/rkiel && cd $_
