@@ -11,6 +11,8 @@ For OS X users, these should just work out-of-box.
 
 ## Installation
 
+Node Version Manager
+
 Install Node using the [Node Version Manager](docs/NVM.md)
 
 Clone this repository
