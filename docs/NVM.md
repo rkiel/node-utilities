@@ -47,6 +47,8 @@ Show which versions are available.
 nvm ls-remote | grep v8.
 ```
 
+Set the specific version number.
+
 ```bash
 NODE8=8.
 ```
@@ -64,6 +66,8 @@ Show which versions are available.
 ```bash
 nvm ls-remote | grep v10.
 ```
+
+Set the specific version number.
 
 ```bash
 NODE10=10.
