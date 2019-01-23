@@ -38,22 +38,16 @@ module Setup
 
       File.open("#{ENV['HOME']}/.bash_profile", "a") do |f|
         f.puts
-        f.puts '#############################################################'
         f.puts "# added by ~/GitHub/rkiel/node-utilities/install/bin/setup"
-        f.puts '#############################################################'
         f.puts 'export NODE_UTILITIES_BIN="~/GitHub/rkiel/node-utilities/bin"'
         f.puts 'export PATH=${NODE_UTILITIES_BIN}:$PATH'
-        f.puts '#############################################################'
         f.puts
       end
 
       File.open("#{ENV['HOME']}/.bashrc", "a") do |f|
         f.puts
-        f.puts '#############################################################'
         f.puts "# added by ~/GitHub/rkiel/node-utilities/install/bin/setup"
-        f.puts '#############################################################'
         f.puts 'source ~/GitHub/rkiel/node-utilities/dotfiles/bashrc'
-        f.puts '#############################################################'
         f.puts
       end
 
