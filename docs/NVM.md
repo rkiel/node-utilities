@@ -47,10 +47,14 @@ Show which versions are available.
 nvm ls-remote | grep v8.
 ```
 
+```bash
+NODE8=8.
+```
+
 Install the specific version. For example,
 
 ```bash
-nvm install 8.10.0
+nvm install $NODE8
 ```
 
 #### Install the latest Node 10.x
@@ -61,10 +65,14 @@ Show which versions are available.
 nvm ls-remote | grep v10.
 ```
 
+```bash
+NODE10=10.
+```
+
 Install the specific version. For example,
 
 ```bash
-nvm install 10.10.0
+nvm install $NODE10
 ```
 
 #### Choose your default Node version
@@ -72,9 +80,9 @@ nvm install 10.10.0
 This will be the version that is enabled whenever you open a new bash terminal.
 
 ```bash
-nvm alias default 8.10.0
+nvm alias default $NODE8
 
-nvm alias default 10.10.0
+nvm alias default $NODE10
 
 nvm alias default system
 ```
@@ -92,9 +100,9 @@ nvm ls
 Use `use` to switch between versions. The effect of this command is within just the specific bash terminal.
 
 ```bash
-nvm use 8.10.0
+nvm use $NODE8
 
-nvm use 10.10.0
+nvm use $NODE10
 
 nvm use system
 ```
