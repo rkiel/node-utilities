@@ -17,7 +17,7 @@ module Scripts
     def script_name
       "sc"
     end
-    
+
     def help
       "TBD"
     end
@@ -30,7 +30,43 @@ module Scripts
     end
 
     def sort ( scripts )
-      keys = scripts.keys.sort_by(&:downcase)
+      new_scripts = scripts.keys.reduce({}) do |object,key|
+        if key.start_with? "pre" and scripts[key.sub(/^pre/,'')]
+          object
+        elsif key.start_with? "post" and scripts[key.sub(/^post/,'')]
+          object
+        else
+          object[key] = {
+            name: key,
+            length: key.length
+          }
+          object
+        end
+      end
+      new_scripts = scripts.keys.reduce(new_scripts) do |object,key|
+        if key.start_with? "pre" and scripts[key.sub(/^pre/,'')]
+          subkey = key.sub(/^pre/,'')
+          object[subkey][:length] = object[subkey][:length] + 6
+          object[subkey][:pre] = {
+            name: '  pre',
+            value: '  ' + scripts[key]
+          }
+          object
+        elsif key.start_with? "post" and scripts[key.sub(/^post/,'')]
+          subkey = key.sub(/^post/,'')
+          object[subkey][:length] = object[subkey][:length] + 6
+          object[subkey][:post] = {
+            name: '  post',
+            value: '  ' + scripts[key]
+          }
+          object
+        else
+          object
+        end
+      end
+
+      keys = new_scripts.keys.sort_by(&:downcase)
+
       heading = 'script'
       width = keys.reduce(heading.length) do |accumulator, element|
         accumulator > element.size ? accumulator : element.size
@@ -42,7 +78,9 @@ module Scripts
       puts fmt % ['script', 'command(s)']
       puts fmt % ['------', '----------']
       keys.each do |key|
-        puts fmt % [key, scripts[key]]
+        puts fmt % [key, new_scripts[key][:name]]
+        puts fmt % [new_scripts[key][:pre][:name], new_scripts[key][:pre][:value]] if new_scripts[key][:pre]
+        puts fmt % [new_scripts[key][:post][:name], new_scripts[key][:post][:value]] if new_scripts[key][:post]
       end
       puts
     end
