@@ -30,6 +30,7 @@ module Scripts
     end
 
     def sort ( scripts )
+      # build all the non pre/post scripts
       new_scripts = scripts.keys.reduce({}) do |object,key|
         if key.start_with? "pre" and scripts[key.sub(/^pre/,'')]
           object
@@ -38,25 +39,30 @@ module Scripts
         else
           object[key] = {
             name: key,
+            value: scripts[key],
             length: key.length
           }
           object
         end
       end
+
+      # fill in the pre/post scripts
       new_scripts = scripts.keys.reduce(new_scripts) do |object,key|
         if key.start_with? "pre" and scripts[key.sub(/^pre/,'')]
           subkey = key.sub(/^pre/,'')
-          object[subkey][:length] = object[subkey][:length] + 6
+          label = '  pre'
+          object[subkey][:length] = [object[subkey][:length], label.length].max
           object[subkey][:pre] = {
-            name: '  pre',
+            name: label,
             value: '  ' + scripts[key]
           }
           object
         elsif key.start_with? "post" and scripts[key.sub(/^post/,'')]
           subkey = key.sub(/^post/,'')
-          object[subkey][:length] = object[subkey][:length] + 6
+          label = '  post'
+          object[subkey][:length] = [object[subkey][:length], label.length].max
           object[subkey][:post] = {
-            name: '  post',
+            name: label,
             value: '  ' + scripts[key]
           }
           object
@@ -68,9 +74,8 @@ module Scripts
       keys = new_scripts.keys.sort_by(&:downcase)
 
       heading = 'script'
-      width = keys.reduce(heading.length) do |accumulator, element|
-        accumulator > element.size ? accumulator : element.size
-      end
+      width = new_scripts.keys.map {|key| new_scripts[key][:length]}.max
+      width = [heading.size, width].max
 
       fmt  = " %-#{width}.#{width}s %s"
 
@@ -78,9 +83,13 @@ module Scripts
       puts fmt % ['script', 'command(s)']
       puts fmt % ['------', '----------']
       keys.each do |key|
-        puts fmt % [key, new_scripts[key][:name]]
-        puts fmt % [new_scripts[key][:pre][:name], new_scripts[key][:pre][:value]] if new_scripts[key][:pre]
-        puts fmt % [new_scripts[key][:post][:name], new_scripts[key][:post][:value]] if new_scripts[key][:post]
+        script = new_scripts[key]
+        pre = script[:pre]
+        post = script[:post]
+
+        puts fmt % [script[:name], script[:value]]
+        puts fmt % [pre[:name], pre[:value]] if pre
+        puts fmt % [post[:name], post[:value]] if post
       end
       puts
     end
