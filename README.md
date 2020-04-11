@@ -4,7 +4,7 @@ This is a collection of simple command-line scripts, bash aliases, and bash util
 
 The command-line scripts include:
 
-* sc - make working with "scripts" inside `package.json` easier
+- sc - make working with "scripts" inside `package.json` easier
 
 The command-line scripts are written in Ruby 2.x using just the standard libraries and do not require any gems to be installed.
 For OS X users, these should just work out-of-box.
@@ -38,7 +38,7 @@ sc add [name] as [words...[then||and||or]]
 sc delete [name] (alias for remove)
 sc help
 sc init
-sc list
+sc list [pattern]
 sc remove [name]
 sc show (alias for list)
 sc tab [pattern]

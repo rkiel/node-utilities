@@ -29,43 +29,51 @@ module Scripts
       exit
     end
 
-    def sort ( scripts )
+    def sort ( scripts, pattern )
       # build all the non pre/post scripts
       new_scripts = scripts.keys.reduce({}) do |object,key|
-        if key.start_with? "pre" and scripts[key.sub(/^pre/,'')]
-          object
-        elsif key.start_with? "post" and scripts[key.sub(/^post/,'')]
-          object
+        if (pattern.match(key))
+          if key.start_with? "pre" and scripts[key.sub(/^pre/,'')]
+            object
+          elsif key.start_with? "post" and scripts[key.sub(/^post/,'')]
+            object
+          else
+            object[key] = {
+              name: key,
+              value: scripts[key],
+              length: key.length
+            }
+            object
+          end
         else
-          object[key] = {
-            name: key,
-            value: scripts[key],
-            length: key.length
-          }
           object
         end
       end
 
       # fill in the pre/post scripts
       new_scripts = scripts.keys.reduce(new_scripts) do |object,key|
-        if key.start_with? "pre" and scripts[key.sub(/^pre/,'')]
-          subkey = key.sub(/^pre/,'')
-          label = '  pre'
-          object[subkey][:length] = [object[subkey][:length], label.length].max
-          object[subkey][:pre] = {
-            name: label,
-            value: '  ' + scripts[key]
-          }
-          object
-        elsif key.start_with? "post" and scripts[key.sub(/^post/,'')]
-          subkey = key.sub(/^post/,'')
-          label = '  post'
-          object[subkey][:length] = [object[subkey][:length], label.length].max
-          object[subkey][:post] = {
-            name: label,
-            value: '  ' + scripts[key]
-          }
-          object
+        if (pattern.match(key))
+          if key.start_with? "pre" and scripts[key.sub(/^pre/,'')]
+            subkey = key.sub(/^pre/,'')
+            label = '  pre'
+            object[subkey][:length] = [object[subkey][:length], label.length].max
+            object[subkey][:pre] = {
+              name: label,
+              value: '  ' + scripts[key]
+            }
+            object
+          elsif key.start_with? "post" and scripts[key.sub(/^post/,'')]
+            subkey = key.sub(/^post/,'')
+            label = '  post'
+            object[subkey][:length] = [object[subkey][:length], label.length].max
+            object[subkey][:post] = {
+              name: label,
+              value: '  ' + scripts[key]
+            }
+            object
+          else
+            object
+          end
         else
           object
         end
