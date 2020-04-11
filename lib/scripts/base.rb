@@ -39,7 +39,9 @@ module Scripts
         elsif (pattern.match(key) or
                pattern.match(scripts[key]) or
                pattern.match(scripts['pre'+key]) or
-               pattern.match(scripts['post'+key]))
+               pattern.match(scripts['post'+key]) or
+               (scripts['pre'+key] and pattern.match('pre'+key)) or
+               (scripts['post'+key] and pattern.match('post'+key)))
           object[key] = {
             name: key,
             value: scripts[key],
