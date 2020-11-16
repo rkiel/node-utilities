@@ -1,0 +1,12 @@
+function get_scripts_commands()
+{
+  if [ -z $2 ] ; then
+    COMPREPLY=(`sc tab`)
+  else
+    COMPREPLY=(`sc tab $2`)
+  fi
+}
+
+complete -F get_scripts_commands sc
+
+alias run='npm run --silent'
