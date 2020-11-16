@@ -1,6 +1,6 @@
 REPO="~/GitHub/rkiel/node-utilities"
 
-if [ $1 == "zsh"] ; then
+if [ "$1" == "zsh" ] ; then
   FILE=~/.zprofile
   echo                                           >> $FILE
   echo "export NODE_UTILITIES_BIN=${REPO}/bin"   >> $FILE
