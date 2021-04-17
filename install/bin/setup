@@ -7,15 +7,17 @@ if [ "$1" == "zsh" ] ; then
 #  echo "export PATH=${NODE_UTILITIES_BIN}:$PATH" >> $FILE
 
   FILE=~/.zshrc
-  echo                                 >> $FILE
-  echo "source ${REPO}/dotfiles/zshrc" >> $FILE
+  echo                                            >> $FILE
+  echo "NODE_UTILITIES=${REPO}"                   >> $FILE
+  echo 'source ${NODE_UTILITIES}/dotfiles/zshrc'  >> $FILE
 else
   FILE=~/.bash_profile
-  echo                                           >> $FILE
-  echo "NODE_UTILITIES_BIN=${REPO}/bin"          >> $FILE
-  echo "export PATH=${NODE_UTILITIES_BIN}:$PATH" >> $FILE
+  echo                                            >> $FILE
+  echo "NODE_UTILITIES=${REPO}"                   >> $FILE
+  echo 'export PATH=${NODE_UTILITIES}/bin:$PATH'  >> $FILE
 
   FILE=~/.bashrc
-  echo                                  >> $FILE
-  echo "source ${REPO}/dotfiles/bashrc" >> $FILE
+  echo                                            >> $FILE
+  echo "NODE_UTILITIES=${REPO}"                   >> $FILE
+  echo 'source ${NODE_UTILITIES}/dotfiles/bashrc' >> $FILE
 fi
